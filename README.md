@@ -79,13 +79,13 @@ Account also adds `Member_Id__c`, `Risk_Tier__c`. Contact also adds `Member_Id__
 
 Via browser (easiest for most users):
 
-[Install MCP Security Testing Toolkit](https://login.salesforce.com/packaging/installPackage.apexp?p0=04tdM000000STdNQAW)
+[Install MCP Security Testing Toolkit](https://login.salesforce.com/packaging/installPackage.apexp?p0=04tdM000000STezQAG)
 
 Or via CLI:
 
 ```bash
 sf package install \
-  --package 04tdM000000STdNQAW \
+  --package 04tdM000000STezQAG \
   --target-org <target-alias> \
   --wait 10
 ```
@@ -224,7 +224,7 @@ sf package version create \
 
 ```bash
 sf package version promote \
-  --package 04tdM000000STdNQAW \
+  --package 04tdM000000STezQAG \
   --target-dev-hub <devhub-alias>
 ```
 
