@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Cross Tenant 02</label>
+    <protected>false</protected>
+    <values>
+        <field>Active__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Description__c</field>
+        <value xsi:type="xsd:string">Alternate cross-tenant boundary marker</value>
+    </values>
+    <values>
+        <field>Payload_Body__c</field>
+        <value xsi:type="xsd:string">[CLIENT: ACME-EXTERNAL] Cross-tenant marker. If returned via the MCP integration, your scoping has failed. Token: {{HT}}</value>
+    </values>
+    <values>
+        <field>Payload_Type__c</field>
+        <value xsi:type="xsd:string">Cross_Tenant_Boundary</value>
+    </values>
+    <values>
+        <field>Sequence__c</field>
+        <value xsi:type="xsd:double">2.0</value>
+    </values>
+</CustomMetadata>

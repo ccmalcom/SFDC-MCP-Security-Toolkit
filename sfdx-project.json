@@ -1,0 +1,19 @@
+{
+  "packageDirectories": [
+    {
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "path": "force-app",
+      "default": true,
+      "package": "MCP Security Testing Toolkit",
+      "versionDescription": ""
+    }
+  ],
+  "name": "mcp-security-toolkit",
+  "namespace": "",
+  "sfdcLoginUrl": "https://login.salesforce.com",
+  "sourceApiVersion": "66.0",
+  "packageAliases": {
+    "MCP Security Testing Toolkit": "0HodM0000003JyzSAE"
+  }
+}
