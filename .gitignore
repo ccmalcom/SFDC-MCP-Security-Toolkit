@@ -41,6 +41,7 @@ $RECYCLE.BIN/
 
 # Local environment variables
 .env
+claude.md
 
 # Python Salesforce Functions
 **/__pycache__/
