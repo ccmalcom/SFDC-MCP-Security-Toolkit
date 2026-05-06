@@ -222,4 +222,4 @@ sf package version promote \
 
 ## Notes
 
-`MCPPayloadLoader` is a development utility used to initially populate the `MCP_Attack_Payload__mdt` records and is not included in the package. The 56 CMT records are shipped directly. If you need to extend the payload library, add new `MCP_Attack_Payload__mdt` records directly in Setup or via the Metadata API and update `manifest/package.xml` accordingly.
+`MCPPayloadLoader` is a development utility used to initially populate the `MCP_Attack_Payload__mdt` records, but it is not necessary to invoke. The 56 CMT records are shipped directly. If you need to extend the payload library, add new `MCP_Attack_Payload__mdt` records directly in Setup or via the Metadata API and update `manifest/package.xml` accordingly.
