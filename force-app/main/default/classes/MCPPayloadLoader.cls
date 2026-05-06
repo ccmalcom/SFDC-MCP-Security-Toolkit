@@ -1,6 +1,11 @@
 /**
  * MCPPayloadLoader — Populates MCP_Attack_Payload__mdt with adversarial payloads.
  *
+ * Reference utility. The 56 CMT records ship as source under
+ * force-app/main/default/customMetadata/, so installs do not need to invoke
+ * this class. It is included to document how the payload library was built
+ * and to make it easy for forks to extend.
+ *
  * REQUIRES: MCP_Attack_Payload__mdt with fields Payload_Type__c, Payload_Body__c,
  *           Description__c, Sequence__c, Active__c
  *
@@ -12,9 +17,8 @@
  * enqueues it. Track progress at:
  *     Setup → Deploy → Deployment Status
  *
- * Body strings use {{HT}} as a honeytoken placeholder. A future refactor of
- * MCPSeedData would substitute this with a per-run unique honeytoken at seed
- * time (e.g., body.replace('{{HT}}', 'HONEYTOKEN-' + runId + '-' + seq)).
+ * Body strings use {{HT}} as a honeytoken placeholder. MCPSeedData substitutes
+ * this with a per-run unique honeytoken at seed time.
  */
 public with sharing class MCPPayloadLoader {
 

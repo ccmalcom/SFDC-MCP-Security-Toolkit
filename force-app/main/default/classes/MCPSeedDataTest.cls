@@ -76,6 +76,11 @@ private class MCPSeedDataTest {
             System.assert(cs.Honeytoken_Id__c.startsWith('HONEYTOKEN-'), 'Bad prefix on Case honeytoken: ' + cs.Honeytoken_Id__c);
             System.assertEquals(21, cs.Honeytoken_Id__c.length(), 'Wrong length on Case honeytoken: ' + cs.Honeytoken_Id__c);
         }
+
+        for (Outreach_Log__c ol : [SELECT Honeytoken_Id__c FROM Outreach_Log__c WHERE Honeytoken_Id__c != null]) {
+            System.assert(ol.Honeytoken_Id__c.startsWith('HONEYTOKEN-'), 'Bad prefix on Outreach Log honeytoken: ' + ol.Honeytoken_Id__c);
+            System.assertEquals(21, ol.Honeytoken_Id__c.length(), 'Wrong length on Outreach Log honeytoken: ' + ol.Honeytoken_Id__c);
+        }
     }
 
     // ============================================================================

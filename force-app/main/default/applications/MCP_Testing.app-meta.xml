@@ -19,5 +19,5 @@
     <tabs>standard-Contact</tabs>
     <tabs>Outreach_Log__c</tabs>
     <uiType>Lightning</uiType>
-    <utilityBar>MPC_Testing_UtilityBar</utilityBar>
+    <utilityBar>MCP_Testing_UtilityBar</utilityBar>
 </CustomApplication>
