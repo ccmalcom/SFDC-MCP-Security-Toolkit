@@ -85,7 +85,7 @@ Or via CLI:
 
 ```bash
 sf package install \
-  --package 04tdM000000STezQAG \
+  --package 04tdM000000SWo9QAG \
   --target-org <target-alias> \
   --wait 10
 ```
@@ -224,7 +224,7 @@ sf package version create \
 
 ```bash
 sf package version promote \
-  --package 04tdM000000STezQAG \
+  --package <versionid> \
   --target-dev-hub <devhub-alias>
 ```
 
