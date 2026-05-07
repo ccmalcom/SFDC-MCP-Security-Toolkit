@@ -1,162 +1,119 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-    <!--
-        ====================================================================
-        Custom Object — pulls Outreach_Log__c and EVERYTHING inside it:
-        all custom fields, validation rules, list views, picklist values,
-        record types, etc. No need to list its fields separately.
-        Also pulls the MCP_Attack_Payload__mdt CMT definition.
-        ====================================================================
-    -->
-    <types>
-        <members>Outreach_Log__c</members>
-        <members>MCP_Attack_Payload__mdt</members>
-        <name>CustomObject</name>
-    </types>
-
-    <!--
-        ====================================================================
-        Custom Fields on Standard Objects — these MUST be listed individually
-        because we're not pulling the entire Account/Contact/Case definitions
-        (which would drag in tons of standard-org metadata).
-        Format is ObjectName.FieldName.
-        ====================================================================
-    -->
-    <types>
-        <members>Account.Test_Payload_Type__c</members>
-        <members>Account.Honeytoken_Id__c</members>
-        <members>Account.Is_Adversarial__c</members>
-        <members>Account.Sensitivity_Label__c</members>
-        <members>Account.Member_Id__c</members>
-        <members>Account.Risk_Tier__c</members>
-
-        <members>Contact.Test_Payload_Type__c</members>
-        <members>Contact.Honeytoken_Id__c</members>
-        <members>Contact.Is_Adversarial__c</members>
-        <members>Contact.Sensitivity_Label__c</members>
-        <members>Contact.Member_Id__c</members>
-        <members>Contact.SSN_Last_Four__c</members>
-
-        <members>Case.Test_Payload_Type__c</members>
-        <members>Case.Honeytoken_Id__c</members>
-        <members>Case.Is_Adversarial__c</members>
-        <members>Case.Sensitivity_Label__c</members>
-
-        <name>CustomField</name>
-    </types>
-
-    <!--
-        ====================================================================
-        Apex Classes — MCPPayloadLoader is included for transparency / reuse
-        (CMT records also ship as source, so consumers don't need to invoke it).
-        ====================================================================
-    -->
-    <types>
-        <members>MCPPayloadLoader</members>
-        <members>MCPSeedData</members>
-        <members>MCPSeedDataTest</members>
-        <name>ApexClass</name>
-    </types>
-
-    <!--
-        ====================================================================
-        Custom Application — "MCP Testing" → API name "MCP_Testing".
-        ====================================================================
-    -->
-    <types>
-        <members>MCP_Testing</members>
-        <name>CustomApplication</name>
-    </types>
-    <types>
-        <members>MCP_Testing_UtilityBar</members>
-        <name>FlexiPage</name>
-    </types>
-
-    <!--
-        ====================================================================
-        Custom Tab for Outreach_Log__c.
-        ====================================================================
-    -->
-    <types>
-        <members>Outreach_Log__c</members>
-        <name>CustomTab</name>
-    </types>
-
-    <types>
-        <members>Enable_Claude_MCP_Connector</members>
-        <name>PermissionSet</name>
-    </types>
-
-    <types>
-        <members>Test_Payload_Type</members>
-        <members>Sensitivity_Levels</members>
-        <name>GlobalValueSet</name>
-    </types>
-    <types>
-        <members>artificialintelligence5</members>
-        <name>ContentAsset</name>
-    </types>
-
-    <types>
-        <members>MCP_Attack_Payload__mdt.Authorization_Test_01</members>
-        <members>MCP_Attack_Payload__mdt.Cross_Tenant_01</members>
-        <members>MCP_Attack_Payload__mdt.Cross_Tenant_02</members>
-        <members>MCP_Attack_Payload__mdt.Direct_Override_01</members>
-        <members>MCP_Attack_Payload__mdt.Direct_Override_02</members>
-        <members>MCP_Attack_Payload__mdt.Direct_Override_03</members>
-        <members>MCP_Attack_Payload__mdt.Direct_Override_04</members>
-        <members>MCP_Attack_Payload__mdt.Direct_Override_05</members>
-        <members>MCP_Attack_Payload__mdt.Direct_Override_06</members>
-        <members>MCP_Attack_Payload__mdt.Encoding_Base64_01</members>
-        <members>MCP_Attack_Payload__mdt.Encoding_Base64_02</members>
-        <members>MCP_Attack_Payload__mdt.Encoding_Hex_01</members>
-        <members>MCP_Attack_Payload__mdt.Encoding_Reverse_01</members>
-        <members>MCP_Attack_Payload__mdt.Encoding_ROT13_01</members>
-        <members>MCP_Attack_Payload__mdt.Encoding_Unicode_01</members>
-        <members>MCP_Attack_Payload__mdt.Fake_System_Block_01</members>
-        <members>MCP_Attack_Payload__mdt.Fake_System_Block_02</members>
-        <members>MCP_Attack_Payload__mdt.Fake_System_Block_03</members>
-        <members>MCP_Attack_Payload__mdt.Fake_System_Block_04</members>
-        <members>MCP_Attack_Payload__mdt.Fake_System_Block_05</members>
-        <members>MCP_Attack_Payload__mdt.Fake_System_Block_06</members>
-        <members>MCP_Attack_Payload__mdt.Honeytoken_Confidential_01</members>
-        <members>MCP_Attack_Payload__mdt.Honeytoken_Confidential_02</members>
-        <members>MCP_Attack_Payload__mdt.Honeytoken_Plain_01</members>
-        <members>MCP_Attack_Payload__mdt.Honeytoken_Plain_02</members>
-        <members>MCP_Attack_Payload__mdt.Indirect_Hijack_01</members>
-        <members>MCP_Attack_Payload__mdt.Indirect_Hijack_02</members>
-        <members>MCP_Attack_Payload__mdt.Indirect_Hijack_03</members>
-        <members>MCP_Attack_Payload__mdt.Indirect_Hijack_04</members>
-        <members>MCP_Attack_Payload__mdt.Indirect_Hijack_05</members>
-        <members>MCP_Attack_Payload__mdt.Indirect_Hijack_06</members>
-        <members>MCP_Attack_Payload__mdt.Indirect_Hijack_07</members>
-        <members>MCP_Attack_Payload__mdt.Markdown_Exfil_01</members>
-        <members>MCP_Attack_Payload__mdt.Markdown_Exfil_02</members>
-        <members>MCP_Attack_Payload__mdt.Markdown_Exfil_03</members>
-        <members>MCP_Attack_Payload__mdt.Markdown_Exfil_04</members>
-        <members>MCP_Attack_Payload__mdt.Markdown_Exfil_05</members>
-        <members>MCP_Attack_Payload__mdt.Multi_Stage_01</members>
-        <members>MCP_Attack_Payload__mdt.Multi_Stage_02</members>
-        <members>MCP_Attack_Payload__mdt.Multi_Stage_03</members>
-        <members>MCP_Attack_Payload__mdt.Multi_Stage_04</members>
-        <members>MCP_Attack_Payload__mdt.Multi_Stage_05</members>
-        <members>MCP_Attack_Payload__mdt.Multi_Stage_06</members>
-        <members>MCP_Attack_Payload__mdt.Read_To_Write_01</members>
-        <members>MCP_Attack_Payload__mdt.Read_To_Write_02</members>
-        <members>MCP_Attack_Payload__mdt.Read_To_Write_03</members>
-        <members>MCP_Attack_Payload__mdt.Read_To_Write_04</members>
-        <members>MCP_Attack_Payload__mdt.Read_To_Write_05</members>
-        <members>MCP_Attack_Payload__mdt.Read_To_Write_06</members>
-        <members>MCP_Attack_Payload__mdt.Read_To_Write_07</members>
-        <members>MCP_Attack_Payload__mdt.Tool_Mimicry_01</members>
-        <members>MCP_Attack_Payload__mdt.Tool_Mimicry_02</members>
-        <members>MCP_Attack_Payload__mdt.Tool_Mimicry_03</members>
-        <members>MCP_Attack_Payload__mdt.Tool_Mimicry_04</members>
-        <members>MCP_Attack_Payload__mdt.Tool_Mimicry_05</members>
-        <members>MCP_Attack_Payload__mdt.Tool_Mimicry_06</members>
-        <name>CustomMetadata</name>
-    </types>
-
-    <version>66.0</version>
+	<types>
+		<members>MCPPayloadLoader</members>
+		<members>MCPSeedData</members>
+		<members>MCPSeedDataTest</members>
+		<name>ApexClass</name>
+	</types>
+	<types>
+		<members>artificialintelligence5</members>
+		<name>ContentAsset</name>
+	</types>
+	<types>
+		<members>MCP_Testing</members>
+		<name>CustomApplication</name>
+	</types>
+	<types>
+		<members>Account.Member_Id__c</members>
+		<members>Account.Risk_Tier__c</members>
+		<members>Account.Sensitivity_Label__c</members>
+		<members>Case.Sensitivity_Label__c</members>
+		<members>Contact.Member_Id__c</members>
+		<members>Contact.SSN_Last_Four__c</members>
+		<members>Contact.Sensitivity_Label__c</members>
+		<name>CustomField</name>
+	</types>
+	<types>
+		<members>MCP_Attack_Payload__mdt.Authorization_Test_01</members>
+		<members>MCP_Attack_Payload__mdt.Cross_Tenant_01</members>
+		<members>MCP_Attack_Payload__mdt.Cross_Tenant_02</members>
+		<members>MCP_Attack_Payload__mdt.Direct_Override_01</members>
+		<members>MCP_Attack_Payload__mdt.Direct_Override_02</members>
+		<members>MCP_Attack_Payload__mdt.Direct_Override_03</members>
+		<members>MCP_Attack_Payload__mdt.Direct_Override_04</members>
+		<members>MCP_Attack_Payload__mdt.Direct_Override_05</members>
+		<members>MCP_Attack_Payload__mdt.Direct_Override_06</members>
+		<members>MCP_Attack_Payload__mdt.Encoding_Base64_01</members>
+		<members>MCP_Attack_Payload__mdt.Encoding_Base64_02</members>
+		<members>MCP_Attack_Payload__mdt.Encoding_Hex_01</members>
+		<members>MCP_Attack_Payload__mdt.Encoding_ROT13_01</members>
+		<members>MCP_Attack_Payload__mdt.Encoding_Reverse_01</members>
+		<members>MCP_Attack_Payload__mdt.Encoding_Unicode_01</members>
+		<members>MCP_Attack_Payload__mdt.Fake_System_Block_01</members>
+		<members>MCP_Attack_Payload__mdt.Fake_System_Block_02</members>
+		<members>MCP_Attack_Payload__mdt.Fake_System_Block_03</members>
+		<members>MCP_Attack_Payload__mdt.Fake_System_Block_04</members>
+		<members>MCP_Attack_Payload__mdt.Fake_System_Block_05</members>
+		<members>MCP_Attack_Payload__mdt.Fake_System_Block_06</members>
+		<members>MCP_Attack_Payload__mdt.Honeytoken_Confidential_01</members>
+		<members>MCP_Attack_Payload__mdt.Honeytoken_Confidential_02</members>
+		<members>MCP_Attack_Payload__mdt.Honeytoken_Plain_01</members>
+		<members>MCP_Attack_Payload__mdt.Honeytoken_Plain_02</members>
+		<members>MCP_Attack_Payload__mdt.Indirect_Hijack_01</members>
+		<members>MCP_Attack_Payload__mdt.Indirect_Hijack_02</members>
+		<members>MCP_Attack_Payload__mdt.Indirect_Hijack_03</members>
+		<members>MCP_Attack_Payload__mdt.Indirect_Hijack_04</members>
+		<members>MCP_Attack_Payload__mdt.Indirect_Hijack_05</members>
+		<members>MCP_Attack_Payload__mdt.Indirect_Hijack_06</members>
+		<members>MCP_Attack_Payload__mdt.Indirect_Hijack_07</members>
+		<members>MCP_Attack_Payload__mdt.Markdown_Exfil_01</members>
+		<members>MCP_Attack_Payload__mdt.Markdown_Exfil_02</members>
+		<members>MCP_Attack_Payload__mdt.Markdown_Exfil_03</members>
+		<members>MCP_Attack_Payload__mdt.Markdown_Exfil_04</members>
+		<members>MCP_Attack_Payload__mdt.Markdown_Exfil_05</members>
+		<members>MCP_Attack_Payload__mdt.Multi_Stage_01</members>
+		<members>MCP_Attack_Payload__mdt.Multi_Stage_02</members>
+		<members>MCP_Attack_Payload__mdt.Multi_Stage_03</members>
+		<members>MCP_Attack_Payload__mdt.Multi_Stage_04</members>
+		<members>MCP_Attack_Payload__mdt.Multi_Stage_05</members>
+		<members>MCP_Attack_Payload__mdt.Multi_Stage_06</members>
+		<members>MCP_Attack_Payload__mdt.Read_To_Write_01</members>
+		<members>MCP_Attack_Payload__mdt.Read_To_Write_02</members>
+		<members>MCP_Attack_Payload__mdt.Read_To_Write_03</members>
+		<members>MCP_Attack_Payload__mdt.Read_To_Write_04</members>
+		<members>MCP_Attack_Payload__mdt.Read_To_Write_05</members>
+		<members>MCP_Attack_Payload__mdt.Read_To_Write_06</members>
+		<members>MCP_Attack_Payload__mdt.Read_To_Write_07</members>
+		<members>MCP_Attack_Payload__mdt.Tool_Mimicry_01</members>
+		<members>MCP_Attack_Payload__mdt.Tool_Mimicry_02</members>
+		<members>MCP_Attack_Payload__mdt.Tool_Mimicry_03</members>
+		<members>MCP_Attack_Payload__mdt.Tool_Mimicry_04</members>
+		<members>MCP_Attack_Payload__mdt.Tool_Mimicry_05</members>
+		<members>MCP_Attack_Payload__mdt.Tool_Mimicry_06</members>
+		<name>CustomMetadata</name>
+	</types>
+	<types>
+		<members>MCP_Attack_Payload__mdt</members>
+		<members>MCP_Test_Manifest__c</members>
+		<members>Outreach_Log__c</members>
+		<name>CustomObject</name>
+	</types>
+	<types>
+		<members>Outreach_Log__c</members>
+		<name>CustomTab</name>
+	</types>
+	<types>
+		<members>MCP_Testing_UtilityBar</members>
+		<name>FlexiPage</name>
+	</types>
+	<types>
+		<members>Sensitivity_Levels</members>
+		<members>Test_Payload_Type</members>
+		<name>GlobalValueSet</name>
+	</types>
+	<types>
+		<members>Account-Account Layout</members>
+		<members>Case-Case Layout</members>
+		<members>Contact-Contact Layout</members>
+		<members>MCP_Attack_Payload__mdt-MCP Attack Payload Layout</members>
+		<members>MCP_Test_Manifest__c-MCP Test Manifest Layout</members>
+		<members>Outreach_Log__c-Outreach Log Layout</members>
+		<name>Layout</name>
+	</types>
+	<types>
+		<members>Enable_Claude_MCP_Connector</members>
+		<name>PermissionSet</name>
+	</types>
+	<version>66.0</version>
 </Package>
