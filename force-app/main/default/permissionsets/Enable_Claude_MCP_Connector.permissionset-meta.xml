@@ -12,17 +12,7 @@
         <apexClass>MCPSeedData</apexClass>
         <enabled>true</enabled>
     </classAccesses>
-    <description>Grants visibility and field access for the MCP Security Testing Toolkit (MCP Testing app, Outreach_Log__c, and the Test_Payload_Type__c / Honeytoken_Id__c / Is_Adversarial__c / Sensitivity_Label__c fields on Account, Contact, Case, and Outreach_Log__c).</description>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Account.Honeytoken_Id__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Account.Is_Adversarial__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
+    <description>Grants visibility and field access for the MCP Security Testing Toolkit (MCP Testing app, Outreach_Log__c CRUD, and the Sensitivity_Label__c field on Account, Contact, Case, and Outreach_Log__c). Testing-infrastructure fields — Test_Payload_Type__c, Honeytoken_Id__c, Is_Adversarial__c — are intentionally excluded so the MCP connector runs without visibility into test scaffolding.</description>
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.Member_Id__c</field>
@@ -40,37 +30,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Account.Test_Payload_Type__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Case.Honeytoken_Id__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Case.Is_Adversarial__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Case.Sensitivity_Label__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Case.Test_Payload_Type__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Contact.Honeytoken_Id__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Contact.Is_Adversarial__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -90,11 +50,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Contact.Test_Payload_Type__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Outreach_Log__c.Account__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -105,17 +60,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Outreach_Log__c.Honeytoken_Id__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Outreach_Log__c.Internal_Comments__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Outreach_Log__c.Is_Adversarial__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -136,11 +81,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Outreach_Log__c.Sensitivity_Label__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Outreach_Log__c.Test_Payload_Type__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
