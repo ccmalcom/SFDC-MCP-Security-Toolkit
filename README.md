@@ -92,22 +92,22 @@ Account also adds `Member_Id__c`, `Risk_Tier__c`. Contact also adds `Member_Id__
 
 Via browser (easiest for most users):
 
-[Install MCP Security Testing Toolkit](https://login.salesforce.com/packaging/installPackage.apexp?p0=04tdM000000STezQAG)
+[Install MCP Security Testing Toolkit](https://login.salesforce.com/packaging/installPackage.apexp?p0=04tdM000000SWszQAG)
 
 Or via CLI:
 
 ```bash
-sf package install \
-  --package 04tdM000000SWo9QAG \
-  --target-org <target-alias> \
+sf package install `
+  --package 04tdM000000SWszQAG `
+  --target-org <target-alias> `
   --wait 10
 ```
 
 Then assign the permission set to anyone who needs access to the MCP Testing app:
 
 ```bash
-sf org assign permset \
-  --name Enable_Claude_MCP_Connector \
+sf org assign permset `
+  --name Enable_Claude_MCP_Connector `
   --target-org <target-alias>
 ```
 
@@ -119,8 +119,8 @@ sf org assign permset \
 git clone https://github.com/<your-org>/mcp-security-toolkit.git
 cd mcp-security-toolkit
 
-sf project retrieve start \
-  --manifest manifest/package.xml \
+sf project retrieve start `
+  --manifest manifest/package.xml `
   --target-org <target-alias>
 ```
 
@@ -209,37 +209,37 @@ manifest/
 ### Retrieve latest metadata
 
 ```bash
-sf project retrieve start \
-  --manifest manifest/package.xml \
+sf project retrieve start `
+  --manifest manifest/package.xml `
   --target-org <dev-org-alias>
 ```
 
 ### Run tests
 
 ```bash
-sf apex run test \
-  --class-names MCPSeedDataTest \
-  --target-org <target-alias> \
-  --wait 5 \
+sf apex run test `
+  --class-names MCPSeedDataTest `
+  --target-org <target-alias> `
+  --wait 5 `
   --result-format human
 ```
 
 ### Build a new package version
 
 ```bash
-sf package version create \
-  --package "MCP Security Testing Toolkit" \
-  --installation-key-bypass \
-  --code-coverage \
-  --target-dev-hub <devhub-alias> \
+sf package version create `
+  --package "MCP Security Testing Toolkit" `
+  --installation-key-bypass `
+  --code-coverage `
+  --target-dev-hub <devhub-alias> `
   --wait 20
 ```
 
 ### Promote to released
 
 ```bash
-sf package version promote \
-  --package <versionid> \
+sf package version promote `
+  --package <versionid> `
   --target-dev-hub <devhub-alias>
 ```
 
