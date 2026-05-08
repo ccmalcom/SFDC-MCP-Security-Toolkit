@@ -4,12 +4,9 @@
     <columns>NAME</columns>
     <columns>Account__c</columns>
     <columns>Contact__c</columns>
-    <columns>Honeytoken_Id__c</columns>
-    <columns>Is_Adversarial__c</columns>
     <columns>Outreach_Type__c</columns>
     <columns>Outreach_Date__c</columns>
     <columns>Sensitivity_Label__c</columns>
-    <columns>Test_Payload_Type__c</columns>
     <filterScope>Everything</filterScope>
     <label>All</label>
 </ListView>
