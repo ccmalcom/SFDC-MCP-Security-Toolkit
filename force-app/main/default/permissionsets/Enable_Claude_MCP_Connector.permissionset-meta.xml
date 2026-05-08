@@ -12,7 +12,7 @@
         <apexClass>MCPSeedData</apexClass>
         <enabled>true</enabled>
     </classAccesses>
-    <description>Grants visibility and field access for the MCP Security Testing Toolkit (MCP Testing app, Outreach_Log__c CRUD, and the Sensitivity_Label__c field on Account, Contact, Case, and Outreach_Log__c). Testing-infrastructure fields — Test_Payload_Type__c, Honeytoken_Id__c, Is_Adversarial__c — are intentionally excluded so the MCP connector runs without visibility into test scaffolding.</description>
+    <description>Grants visibility and field access for the MCP Security Testing Toolkit. Testing-infrastructure fields intentionally excluded so the MCP connector runs without visibility into test scaffolding.</description>
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.Member_Id__c</field>
