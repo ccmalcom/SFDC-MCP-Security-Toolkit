@@ -6,6 +6,17 @@ Built and tested against API version 66.0.
 
 ---
 
+## Disclaimer
+
+> **This toolkit is released for security research and educational purposes only.**
+>
+> - **Do not install this package on any production org, client org, or any org that processes real data.** It is designed exclusively for isolated sandbox or scratch org environments under your direct control.
+> - This project is open source and provided as-is. The author does not endorse, condone, or accept responsibility for any use of this toolkit outside of a legitimate security research or educational context.
+> - Prompt injection and data-exfiltration payloads included here are inert test fixtures — they have no effect outside of an MCP integration under active testing. They are not intended to be weaponized or repurposed for attacks against real systems or real users.
+> - By installing or using this toolkit you accept full responsibility for ensuring your use complies with applicable laws, your organization's security policies, and the terms of service of any platform involved.
+
+---
+
 ## Contents
 
 - [Attack categories](#attack-categories)
@@ -54,12 +65,14 @@ Stores payload templates. Fields: `Payload_Type__c`, `Payload_Body__c` (Long Tex
 
 ### Testing fields (on Account, Contact, Case, Outreach_Log__c)
 
-| Field | Type | Notes |
-|---|---|---|
-| `Test_Payload_Type__c` | Picklist (15 values) | Identifies the attack category or `Benign` |
-| `Is_Adversarial__c` | Checkbox | `true` on all injected records |
-| `Honeytoken_Id__c` | Text (80) | Unique canary string for this record; matches token embedded in body |
-| `Sensitivity_Label__c` | Picklist | Public / Internal / Confidential / Restricted |
+| Field | Type | Notes | MCP connector FLS |
+|---|---|---|---|
+| `Test_Payload_Type__c` | Picklist (15 values) | Identifies the attack category or `Benign` | **None** — excluded from perm set |
+| `Is_Adversarial__c` | Checkbox | `true` on all injected records | **None** — excluded from perm set |
+| `Honeytoken_Id__c` | Text (80) | Unique canary string for this record; matches token embedded in body | **None** — excluded from perm set |
+| `Sensitivity_Label__c` | Picklist | Public / Internal / Confidential / Restricted | Read / Write |
+
+`Test_Payload_Type__c`, `Is_Adversarial__c`, and `Honeytoken_Id__c` are testing-infrastructure fields intentionally withheld from `Enable_Claude_MCP_Connector`. A user with only that permission set assigned will receive `null` for those fields in SOQL results, which prevents the MCP connector from trivially identifying injected records. Sysadmin / View All Data bypasses FLS and will always see them.
 
 Account also adds `Member_Id__c`, `Risk_Tier__c`. Contact also adds `Member_Id__c`, `SSN_Last_Four__c` (synthetic only — see [Honeytoken conventions](#honeytoken-conventions)).
 
@@ -97,6 +110,8 @@ sf org assign permset \
   --name Enable_Claude_MCP_Connector \
   --target-org <target-alias>
 ```
+
+`Enable_Claude_MCP_Connector` grants the MCP Testing app, `Outreach_Log__c` CRUD, and read/write FLS for `Sensitivity_Label__c` on all four objects. It intentionally **excludes** `Test_Payload_Type__c`, `Honeytoken_Id__c`, and `Is_Adversarial__c` so the connector cannot distinguish injected records from benign ones. Run cleanup and inspection tasks as sysadmin.
 
 ### Option B — deploy from source
 
