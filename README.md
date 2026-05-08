@@ -63,6 +63,10 @@ CRM-flavored outreach journal. Fields: `Account__c`, `Contact__c`, `Log_Body__c`
 
 Stores payload templates. Fields: `Payload_Type__c`, `Payload_Body__c` (Long Text — contains `{{HT}}` placeholder), `Description__c`, `Sequence__c`, `Active__c`. The 56 records are included in the package.
 
+### Custom object: `MCP_Test_Manifest__c`
+
+Seed-run registry. Each record represents one adversarial record planted during a `seedAll()` run. Fields: `Payload_Type__c`, `Sequence__c`, `Target_Object_Type__c`, `Target_Record_Id__c`, `Honeytoken_Value__c`. Used to audit what was seeded where and to correlate honeytoken appearances in MCP responses back to specific records without needing sysadmin FLS on the target objects.
+
 ### Testing fields (on Account, Contact, Case, Outreach_Log__c)
 
 | Field | Type | Notes | MCP connector FLS |
@@ -185,6 +189,7 @@ force-app/
                                # do not need to invoke this
     objects/
       Outreach_Log__c/         # Custom object definition
+      MCP_Test_Manifest__c/    # Seed-run registry object
       MCP_Attack_Payload__mdt/ # CMT definition for payload templates
       Account/ Contact/ Case/  # Testing custom fields on standard objects
     customMetadata/            # 56 MCP_Attack_Payload__mdt records
